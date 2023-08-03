@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@angular/cdk": "^16.1.6",
+    "@swimlane/ngx-charts": "^20.4.1"
+  }
+}

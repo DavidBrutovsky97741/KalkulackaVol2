@@ -1,0 +1,11 @@
+.infoImg{
+    width: 1vh;
+    height: auto;
+    padding-left: 1vh;
+}
+
+.mdc-slider {
+    width: 70vh;
+    /* background-color: red; */
+}
+

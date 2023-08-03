@@ -1,0 +1,8 @@
+
+<label for="inputField">{{ labelTitle }}</label><br>
+<input id="inputField" [value]="sliderValue + ' ' +unit">
+<img class="infoImg" src="/assets/images/info.png" alt="info"><br>
+
+<mat-slider [min]="sliderMin" [max]="sliderMax" color="primary">
+    <input matSliderThumb [(ngModel)]="sliderValue" (input)="onValueChange()">
+</mat-slider>

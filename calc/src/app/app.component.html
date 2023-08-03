@@ -1,0 +1,13 @@
+<div class="inputField" *ngFor="let item of arrayList">
+    <app-input-field [labelTitle]="item.name" 
+                    [sliderMin]="item.data[0].min" 
+                    [sliderMax]="item.data[0].max"
+                    [unit]="item.data[0].unit" 
+                    (valueChange)="onFieldValueChange($event, item.name)">
+                </app-input-field>
+</div>
+
+
+<ngx-charts-pie-chart [results]="productSales" [view]="view"></ngx-charts-pie-chart> 
+
+<button (click)="klikacka()"> + </button>
