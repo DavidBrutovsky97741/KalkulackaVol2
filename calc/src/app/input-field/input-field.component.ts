@@ -9,7 +9,7 @@ import { MatSliderModule } from '@angular/material/slider'; // Importujte MatSli
 })
 export class InputFieldComponent {
 
-  sliderValue: number = 1;
+  @Input() sliderValue: number = 1;
   @Input() labelTitle: string = '';
   @Input() unit: string = '';
   @Input() sliderMin: number = 10;

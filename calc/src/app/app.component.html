@@ -1,15 +1,31 @@
 <div class="inputField" *ngFor="let item of arrayList">
-    <app-input-field [labelTitle]="item.name" 
-                    [sliderMin]="item.data[0].min" 
-                    [sliderMax]="item.data[0].max"
-                    [unit]="item.data[0].unit" 
-                    (valueChange)="onFieldValueChange($event, item.name)">
-                </app-input-field>
-</div>
+    <ng-container *ngIf="item.type === 'single'">
+      <app-input-field [labelTitle]="item.name"
+                       [sliderValue]="item.data[0].value" 
+                       [sliderMin]="item.data[0].min" 
+                       [sliderMax]="item.data[0].max"
+                       [unit]="item.data[0].unit" 
+                       (valueChange)="onFieldValueChange($event, item.name)">
+      </app-input-field>
+    </ng-container>
+    <ng-container *ngIf="item.type === 'double'">
+      <app-double-input-field [labelTitle]="item.name"
+                              [sliderValue]="item.data[0].value" 
+                              [sliderMin]="item.data[0].min" 
+                              [sliderMax]="item.data[0].max"
+                              [unit]="item.data[0].unit" 
+                              (valueChange)="onFieldValueChange($event, item.name)">
+      </app-double-input-field>
+    </ng-container>
+  </div>
 
 
-<ngx-charts-pie-chart [results]="productSales" [view]="view"></ngx-charts-pie-chart> 
+<ngx-charts-advanced-pie-chart
+  [view]="view"
+  [results]="pieChartData"
+  [gradient]="true"
+  [customColors]="pieChartcustomColors"
+  [label]="customLabel"
 
-
-<!--pridane pre skusku spravnosti inkrementacie values in productSales  -->
-<button (click)="klikacka()"> + </button>
+  >
+</ngx-charts-advanced-pie-chart>

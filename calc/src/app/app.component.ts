@@ -1,23 +1,5 @@
 import { Component, ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
-
- // interface pre upresnenie datovych 
-  //                  typov pre array
-
-interface DataEntry {
-  unit: string;
-  min: number;
-  max: number;
-}
-
-interface DataGroup {
-  name: string;
-  data: DataEntry[];
-}
-
-interface DataPie {
-  name: string;
-  value: number;
-}
+import { DataGroup, DataPie, DataEntry } from '../assets/interfaces'; // Import interfaces from the new file
 
 @Component({
   selector: 'app-root',
@@ -26,107 +8,163 @@ interface DataPie {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'calc';  
-
+  title = 'calc';
   
-  view: [number, number] = [380, 300];
-  KIS: number = 10;
-  CZ: number = 20;
+  view: [number, number] = [500, 300];
+  public KIS: number = 10;
+  public CZ: number = 20;
 
-  
-  /* 
+  customLabel: string = "Spolu";
+
+  pieChartcustomColors = [
+    { name: "Spolu investované", value: '#302841' },
+    { name: "Čistý zisk", value: '#fbc910' }
+  ];  
+
+  /*
   *** Datove bloky pre vytvorenie sliderov  ***
   */
 
   arrayList: DataGroup[] = [
     {
       name: "Ročný výnos",
+      type: "single",
       data: [
         {
           unit: "%",
           min: 0,
-          max: 10
+          max: 10,
+          value: 5
         }
       ]
     },
     {
       name: "Finančný cieľ",
+      type: "single",
       data: [
         {
           unit: "€",
           min: 0,
-          max: 1000000
+          max: 1000000,
+          value: 10
         }
       ]
     },
     {
       name: "Aktuálny stav úspor",
+      type: "single",
       data: [
         {
           unit: "€",
           min: 0,
-          max: 1000000
+          max: 1000000,
+          value: 10
         }
       ]
     },
     {
       name: "Dĺžka sporenia",
+      type: "double",
       data: [
         {
           unit: "roky",
           min: 0,
-          max: 30
+          max: 360, // vsutp je pocet mesiacov 30*12
+          value: 10
         }
       ]
     },
     {
       name: "Mesačný vklad",
+      type: "single",
       data: [
         {
           unit: "€",
           min: 0,
-          max: 10000
+          max: 10000,
+          value: 10
         }
       ]
     }
   ];
 
-  productSales : DataPie[] = [
-    {
-      "name" : "Čisltý zisk",
-      "value": 10
-    },
-    {
-      "name" : "Kumulatív investovaných peňazí",
-      "value": 20
-    }
-  ];
-
-
+  public pieChartData: DataPie[] = [];
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
+  /**
+   * Init component
+   */
+  public ngOnInit(): void {
+    this.pieChartData = <DataPie[]>[
+      {
+        "name": "Čistý zisk",
+        "value": this.CZ
+      },
+      {
+        "name": "Spolu investované",
+        "value": this.KIS
+      }];
+  }
+
   /*
-  Funkcia na odchytenie hodnoty v danom slidery
-  TODO : prepisovat arrayListy pre grafy TU
+  * Funkcia na odchytenie hodnoty v danom slidery
+  * TODO : prepisovat arrayListy pre grafy TU
   */
 
   onFieldValueChange(value: number, name: string): void {
-    this.CZ ++ ;
-    this.KIS -- ;
-    console.log(this.productSales[0].value);
 
+    let arrLen =  this.arrayList.length;
+
+    for(let i=0; i<arrLen; i++){
+      if(this.arrayList[i].name === name){
+        this.arrayList[i].data[0].value = value;
+      }
+    }
+
+    this.KIS = this.totalInvested();
+    this.CZ = this.profit();
+
+    this.pieChartData = <DataPie[]>[
+      {
+        "name": "Čistý zisk",
+        "value": this.CZ
+      },
+      {
+        "name": "Spolu investované",
+        "value": this.KIS
+      }
+    ]
+
+    console.log('klik');
     this.changeDetectorRef.detectChanges();
+
   }
 
-  klikacka(){
-    this.productSales[0].value ++;
-    this.productSales[1].value --;
+    totalInvested(): number{ 
+      let moneyInput = this.arrayList[2].data[0].value;
+      let numOfMonths = this.arrayList[3].data[0].value;
+      let deposit = this.arrayList[4].data[0].value;      
 
-    console.log('Q');
-    this.changeDetectorRef.detectChanges();
-  }
+      return numOfMonths * deposit + moneyInput;
+    }
+
+    profit(): number{
+      let yearRevenue = this.arrayList[0].data[0].value;
+      let financialGoal = this.arrayList[1].data[0].value;
+      let moneyInput = this.arrayList[2].data[0].value;
+      let numOfMonths = this.arrayList[3].data[0].value;
+      let deposit = this.arrayList[4].data[0].value;
+
+      let x = yearRevenue/100/12;
+
+      let y = deposit * ((Math.pow(1 + x, numOfMonths) - 1) / x) * (1 + x);
+
+      y = y - this.KIS;
+      return y;
+    }
   
+
  }
 
- 
+
