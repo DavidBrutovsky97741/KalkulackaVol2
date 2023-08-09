@@ -1,31 +1,53 @@
-<div class="inputField" *ngFor="let item of arrayList">
+<div class="inputField">
+  <div class="" *ngFor="let item of arrayList">
     <ng-container *ngIf="item.type === 'single'">
-      <app-input-field [labelTitle]="item.name"
-                       [sliderValue]="item.data[0].value" 
-                       [sliderMin]="item.data[0].min" 
-                       [sliderMax]="item.data[0].max"
-                       [unit]="item.data[0].unit" 
-                       (valueChange)="onFieldValueChange($event, item.name)">
+      <app-input-field 
+      [labelTitle]="item.name" 
+      [sliderValue]="item.data[0].value" 
+      [sliderMin]="item.data[0].min"
+      [sliderMax]="item.data[0].max" 
+      [unit]="item.data[0].unit" 
+      (valueChange)="onFieldValueChange($event, item.name)">
       </app-input-field>
     </ng-container>
     <ng-container *ngIf="item.type === 'double'">
-      <app-double-input-field [labelTitle]="item.name"
-                              [sliderValue]="item.data[0].value" 
-                              [sliderMin]="item.data[0].min" 
-                              [sliderMax]="item.data[0].max"
-                              [unit]="item.data[0].unit" 
-                              (valueChange)="onFieldValueChange($event, item.name)">
+      <app-double-input-field 
+      [labelTitle]="item.name" 
+      [sliderValue]="item.data[0].value" 
+      [sliderMin]="item.data[0].min"
+      [sliderMax]="item.data[0].max" 
+      [unit]="item.data[0].unit" 
+      (valueChange)="onFieldValueChange($event, item.name)">
       </app-double-input-field>
     </ng-container>
   </div>
 
 
-<ngx-charts-advanced-pie-chart
-  [view]="view"
-  [results]="pieChartData"
-  [gradient]="true"
-  [customColors]="pieChartcustomColors"
-  [label]="customLabel"
+</div>
 
-  >
-</ngx-charts-advanced-pie-chart>
+<div class="lineChart">
+  <ngx-charts-line-chart 
+  [view]="viewLine" 
+  [xAxis]="xAxis" 
+  [yAxis]="yAxis" 
+  [timeline]="timeline"
+  [results]="lineChartData" 
+  [scheme]="customColorScheme" 
+  
+  [yAxisTickFormatting]="formatEUR">
+  </ngx-charts-line-chart>
+
+</div>
+
+
+<div class="pieChart">
+  <ngx-charts-advanced-pie-chart 
+  [view]="viewPie" 
+  [results]="pieChartData" 
+  [gradient]="true"
+  [customColors]="pieChartcustomColors" 
+  [label]="customLabel" 
+  [valueFormatting]="formatValue">
+  </ngx-charts-advanced-pie-chart>
+
+</div>

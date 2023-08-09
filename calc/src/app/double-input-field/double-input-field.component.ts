@@ -37,6 +37,7 @@ export class DoubleInputFieldComponent {
     this.formatGrammar(years, months);
     return { years, months };
   }
+  
 /**
  * Funkcia prepisuje gramaticky spravne roky a mesiace v input fielde 
  */

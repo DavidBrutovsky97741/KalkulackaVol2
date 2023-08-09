@@ -1,0 +1,18 @@
+.inputField {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 3vh;
+    flex-wrap: wrap; 
+    flex-direction: row;
+  }
+
+  .lineChart{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pieChart{
+    display: flex;
+    justify-content: center;
+  }

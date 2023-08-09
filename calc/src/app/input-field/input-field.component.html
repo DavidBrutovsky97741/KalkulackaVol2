@@ -1,13 +1,17 @@
-<mat-form-field>
-    <mat-label>{{ labelTitle }}</mat-label>
-    <div class="input-container">
-      <input matInput type="number" [(ngModel)]="sliderValue" (input)="onValueChange()">
-      <p class="unit">{{unit}}</p>
-    </div>
-  </mat-form-field>
-
-  <mat-icon>info</mat-icon> <br>
+<div class="inputPart">
+    <mat-form-field class="example-form-field">
+        <mat-label>{{ labelTitle }}</mat-label>
+        <div class="input-container">
+            <input matInput type="number" [(ngModel)]="sliderValue" (input)="onValueChange()" [min]="sliderMin" [max]="sliderMax">
+            <p class="unit">{{unit}}</p>
+        </div>
+    </mat-form-field>
+    
+    <mat-icon>info</mat-icon> <br>
 
 <mat-slider [min]="sliderMin" [max]="sliderMax" color="primary">
     <input matSliderThumb [(ngModel)]="sliderValue" (input)="onValueChange()">
 </mat-slider>
+
+
+</div>

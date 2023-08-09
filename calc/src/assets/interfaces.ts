@@ -1,4 +1,4 @@
-export interface DataEntry {
+interface DataEntry {
     unit: string;
     min: number;
     max: number;
@@ -12,6 +12,16 @@ export interface DataEntry {
   }
   
   export interface DataPie {
+    name: string;
+    value: number;
+  }
+
+  export interface DataSet {
+    name: string;
+    series: BarValeus[];
+  }
+
+  export interface BarValeus {
     name: string;
     value: number;
   }

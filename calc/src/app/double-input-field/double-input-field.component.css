@@ -1,8 +1,21 @@
 .mdc-slider {
-    width: 70vh;
+    width: 95%;
     /* background-color: red; */
 }
 .input-container {
     display: flex;
     align-items: center; 
   }
+
+  .inputPart{
+    border: 2px solid black;
+    margin: 1vh;
+    padding: 1vh;
+    width: 50vh;
+  }
+  
+  .example-form-field {
+    width: 45%;
+    margin-right: 1%;
+  }
+
