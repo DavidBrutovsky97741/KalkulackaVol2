@@ -12,7 +12,8 @@ export class DoubleInputFieldComponent {
   @Input() unit: string = '';
   @Input() sliderMin: number = 10;
   @Input() sliderMax: number = 100;
-
+  @Input() disabledValue: boolean = false;
+  
   years: string = "roky";
   months: string = "mesiace";
 

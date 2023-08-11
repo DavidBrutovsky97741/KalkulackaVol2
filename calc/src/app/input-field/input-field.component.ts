@@ -14,6 +14,8 @@ export class InputFieldComponent {
   @Input() unit: string = '';
   @Input() sliderMin: number = 10;
   @Input() sliderMax: number = 100;
+  @Input() step: number = 100;
+  @Input() disabledValue: boolean = false;
 
   /*
     Emitter sluzi na komunikaciu s rodicom

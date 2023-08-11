@@ -9,9 +9,8 @@
     
     <mat-icon>info</mat-icon> <br>
 
-<mat-slider [min]="sliderMin" [max]="sliderMax" color="primary">
-    <input matSliderThumb [(ngModel)]="sliderValue" (input)="onValueChange()">
+<mat-slider class="my-slider" [min]="sliderMin" [max]="sliderMax" color="primary" [step]="step">
+    <input matSliderThumb [(ngModel)]="sliderValue" (input)="onValueChange()" [disabled]="disabledValue">
 </mat-slider>
-
 
 </div>

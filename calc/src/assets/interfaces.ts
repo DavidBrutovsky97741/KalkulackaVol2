@@ -3,6 +3,8 @@ interface DataEntry {
     min: number;
     max: number;
     value: number;
+    step: number;
+    disabled: boolean;
   }
   
   export interface DataGroup {
@@ -24,4 +26,9 @@ interface DataEntry {
   export interface BarValeus {
     name: string;
     value: number;
+  }
+
+  export interface Car {
+    value: string;
+    viewValue: string;
   }
