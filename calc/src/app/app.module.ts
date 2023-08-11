@@ -13,6 +13,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { FormsModule } from '@angular/forms';
 import { DoubleInputFieldComponent } from './double-input-field/double-input-field.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { DoubleInputFieldComponent } from './double-input-field/double-input-fie
     FormsModule,
     NgxChartsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
 
   ],
   providers: [],

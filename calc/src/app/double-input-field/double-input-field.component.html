@@ -2,7 +2,7 @@
     <mat-form-field class="example-form-field">
         <mat-label>{{ labelTitle }}</mat-label>
         <div class="input-container">
-            <input matInput type="number" [(ngModel)]="getYearsAndMonths().years">
+            <input matInput type="number" [(ngModel)]="getYearsAndMonths().years" max="30">
             <p class="unit">{{years}}</p>
         </div>
     </mat-form-field>
@@ -11,13 +11,13 @@
     <mat-form-field class="example-form-field">
         <mat-label></mat-label>
         <div class="input-container">
-            <input matInput type="number" [(ngModel)]="getYearsAndMonths().months " max="12">
+            <input matInput type="number" [(ngModel)]="getYearsAndMonths().months " max="11">
             <p class="unit">{{months}}</p>
         </div>
     </mat-form-field>
     
 
-  <mat-icon>info</mat-icon> <br>
+  <mat-icon [matTooltip]="popUp">info</mat-icon> <br>
   
   <mat-slider class="my-slider" [min]="sliderMin" [max]="sliderMax" color="primary">
       <input matSliderThumb [(ngModel)]="sliderValue" (input)="onValueChange()" [disabled]="disabledValue">

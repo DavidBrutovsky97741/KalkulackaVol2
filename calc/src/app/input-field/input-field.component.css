@@ -3,7 +3,8 @@
 }
 .input-container {
     display: flex;
-    align-items: center; 
+    align-items: center;
+  
   }
 
   .inputPart{
@@ -15,6 +16,8 @@
   .example-form-field {
     width: 90%;
     margin-right: 2%;
+    border-radius: 15px;
+
   }
 
   .my-slider {

@@ -1,15 +1,16 @@
+<!-- drop-down na výber výpočtu konkretného poľa -->
 <form>
-<mat-form-field>
+<mat-form-field class="form">
   <mat-label>Chcem vypočítať:</mat-label>
-  <select matNativeControl [(ngModel)]="selectedCar" name="car" (change)="onCarSelectionChange()">
-    <option value="" selected></option>
-    <option *ngFor="let car of cars" [value]="car.value">
-      {{car.viewValue}}
+  <select matNativeControl [(ngModel)]="selectedCar" name="DropDown" (change)="onCarSelectionChange()">
+    <option *ngFor="let DropDown of valueField" [value]="DropDown.value">
+      {{DropDown.viewValue}}
     </option>
   </select>
 </mat-form-field>
 </form>
 
+<!-- dynamicky generovane input polia  -->
 <div class="inputField">
   <div class="" *ngFor="let item of arrayList">
 
@@ -21,7 +22,8 @@
       [disabledValue]="item.data[0].disabled"
       [step]="item.data[0].step"
       [sliderMax]="item.data[0].max" 
-      [unit]="item.data[0].unit" 
+      [unit]="item.data[0].unit"
+      [popUp]="item.data[0].popUpData" 
       (valueChange)="onFieldValueChange($event, item.name)">
       </app-input-field>
     </ng-container>
@@ -33,14 +35,17 @@
       [sliderMin]="item.data[0].min"
       [sliderMax]="item.data[0].max" 
       [disabledValue]="item.data[0].disabled"
-      [unit]="item.data[0].unit" 
-      (valueChange)="onFieldValueChange($event, item.name)">
+      [unit]="item.data[0].unit"
+      [popUp]="item.data[0].popUpData" 
+      (valueChange)="onFieldValueChange($event, item.name)"
+      >
       </app-double-input-field>
     </ng-container>
 
   </div>
 </div>
 
+<!-- line graf -->
 <div class="lineChart">
   <ngx-charts-line-chart 
   [xAxis]="xAxis" 
@@ -53,7 +58,7 @@
 
 </div>
 
-
+<!-- kruhovy graf -->
 <div class="pieChart">
   <ngx-charts-advanced-pie-chart 
   [results]="pieChartData" 

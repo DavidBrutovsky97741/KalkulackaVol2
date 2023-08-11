@@ -5,6 +5,7 @@ interface DataEntry {
     value: number;
     step: number;
     disabled: boolean;
+    popUpData: string;
   }
   
   export interface DataGroup {
@@ -28,7 +29,7 @@ interface DataEntry {
     value: number;
   }
 
-  export interface Car {
+  export interface DropDown {
     value: string;
     viewValue: string;
   }

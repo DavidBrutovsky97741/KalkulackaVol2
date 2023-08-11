@@ -13,6 +13,7 @@ export class DoubleInputFieldComponent {
   @Input() sliderMin: number = 10;
   @Input() sliderMax: number = 100;
   @Input() disabledValue: boolean = false;
+  @Input() popUp: string = '';
   
   years: string = "roky";
   months: string = "mesiace";
@@ -27,10 +28,10 @@ export class DoubleInputFieldComponent {
     this.valueChange.emit(this.sliderValue);
   }  
   /**
-   * Pre 2 input fieldy prepocitam zvlast roky a mesiace - pouzitie v html pri inpute
-   * input params: none
-   * return: rok, mesiac
-   * * */
+   * * Pre 2 input fieldy prepocitam zvlast roky a mesiace - pouzitie v html pri inpute
+   * 
+   * @returns rok, mesiac dosadeny v html
+   */
   getYearsAndMonths(): { years: number; months: number } {
  
     const years = Math.floor(this.sliderValue / 12);
@@ -39,9 +40,12 @@ export class DoubleInputFieldComponent {
     return { years, months };
   }
   
-/**
- * Funkcia prepisuje gramaticky spravne roky a mesiace v input fielde 
- */
+  /**
+   * unkcia prepisuje gramaticky spravne roky a mesiace v input fielde 
+   * @param years pocet rokov
+   * 
+   * @param months pocet mesiacov
+   */
   formatGrammar(years: number, months: number):void{
     if(years == 1){
       this.years = "rok";

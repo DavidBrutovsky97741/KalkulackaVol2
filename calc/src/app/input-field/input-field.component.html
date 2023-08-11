@@ -1,13 +1,13 @@
 <div class="inputPart">
     <mat-form-field class="example-form-field">
-        <mat-label>{{ labelTitle }}</mat-label>
+        <mat-label class="customLabel">{{ labelTitle }}</mat-label>
         <div class="input-container">
             <input matInput type="number" [(ngModel)]="sliderValue" (input)="onValueChange()" [min]="sliderMin" [max]="sliderMax">
             <p class="unit">{{unit}}</p>
         </div>
     </mat-form-field>
     
-    <mat-icon>info</mat-icon> <br>
+    <mat-icon [matTooltip]="popUp">info</mat-icon> <br>
 
 <mat-slider class="my-slider" [min]="sliderMin" [max]="sliderMax" color="primary" [step]="step">
     <input matSliderThumb [(ngModel)]="sliderValue" (input)="onValueChange()" [disabled]="disabledValue">
